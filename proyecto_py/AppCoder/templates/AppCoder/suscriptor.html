@@ -1,0 +1,93 @@
+{% extends 'AppCoder/padre.html' %} 
+
+{% load static %}
+
+{% block titulo %} 
+
+    {<h1 class="text-center my-5">Suscribete a mi blog</h1>}
+
+{% endblock %}
+
+{% block imagen %} 
+
+<img src="../../static/AppCoder/assets/suscribirse.png" class="img-fluid" alt="dibujo">
+
+{% endblock %}
+
+{% block titulo2 %} 
+
+<h2 class="text-center my-5">Beneficios</h2>
+
+{% endblock %}
+
+{% block imagen2 %} 
+
+<img src="../../static/AppCoder/assets/regalo.png" class="img-fluid" alt="dibujo">
+
+{% endblock %}
+
+{% block tituloForm %} 
+
+<h4 class="text-center h3_contacto">Suscribete a mi blog</h4>
+
+{% endblock %}
+
+{% block formulario %} 
+
+<br>
+
+<div class="container" style="display: flex; align-items: center; justify-content: center;">
+    <form action="" method="post" class="" >
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit"  value="Agregar" style="background-color: #D69CAF; border-radius: 8px; border-color: #ffff; width: 100px; height: 40px;">
+    </form>
+</div>
+
+<br>
+<br>
+
+<div class="container">
+    
+    <h5>{{ mensaje }}</h5>
+
+    <table class="table table-bordered" style="border-color: #023e8a">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>EMAIL</th>
+                <th>ELIMINAR</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for suscrip in suscriptor %}
+            <tr>
+                <td>
+                    {{ suscrip.id }}                
+                </td>
+                <td>
+                    {{ suscrip.nombre }}                
+                </td>
+                <td>
+                    {{ suscrip.apellido }}                
+                </td>
+                <td>
+                    {{ suscrip.email }}                
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="{% url 'eliminarSuscriptor' suscrip.id %}"><i class="fas fa-trash-alt"></i></a>                
+                </td>
+
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

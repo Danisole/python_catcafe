@@ -1,0 +1,90 @@
+{% extends 'AppCoder/padre.html' %} 
+
+{% load static %}
+
+{% block titulo %} 
+
+    {<h1 class="text-center my-5">Comunidad</h1>}
+
+{% endblock %}
+
+{% block imagen %} 
+
+<img src="../../static/AppCoder/assets/gato_bb.jpg" class="img-fluid" alt="dibujo" style="display: flexbox; justify-content: center; align-items: center; flex-direction: column; height: 60vh; width: auto; border-radius: 50%;">
+
+{% endblock %}
+
+{% block titulo2 %} 
+
+<h2 class="text-center my-5">Reseñas</h2>
+
+{% endblock %}
+
+{% block imagen2 %} 
+
+<img src="../../static/AppCoder/assets/cafe_torta.jpg" class="img-fluid" alt="dibujo" style="display: flexbox; justify-content: center; align-items: center; flex-direction: column; height: 60vh; width: auto; border-radius: 50%;">
+
+{% endblock %}
+
+{% block tituloForm %} 
+
+        <h4 class="text-center h3_contacto">Deja en el muro tu reseña</h4>
+        <br>
+{% endblock %}
+
+
+{% block formulario %} 
+
+        <form action="" method="post" class="" style="display: flex; flex-direction: column; align-items: center; justify-content: center;" >
+            <table>
+                {% csrf_token %}
+                {{ form.as_table }}
+            </table>
+            <input type="submit"  value="Agregar" 
+            style="background-color: #415a77; 
+            border-radius: 8px; 
+            border-color: #ffff; 
+            width: 100px; height: 40px;
+            color: azure;
+            ">
+            
+        </form>
+
+        <br>
+
+        <div class="container">
+            <table class="table table-bordered" style="color: azure;">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Comentario</th>                      
+                        <th>Estrellas</th>                     
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for comentario in comentarios %}
+                    <tr>
+                        <td>
+                            {{ comentario.nombre }}
+                        </td>
+                        <td>
+                            {{ comentario.reseña }}
+                        </td>
+                        <td>
+                            {{ comentario.estrellas }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        
+
+{% endblock %}
+
+
+
+
+

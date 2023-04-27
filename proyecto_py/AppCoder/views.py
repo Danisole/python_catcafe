@@ -11,8 +11,11 @@ from django.contrib.auth import login, authenticate
 
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+
+# Create your views here.
+@login_required
 def  crear_paquete(request):
 
     nombre_paquete="paquete aventurero"
@@ -61,11 +64,11 @@ def eliminarSuscriptor(request, id):
     form = SuscriptorForm()
     return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form})
 
-
+@login_required
 def busquedaItinerario(request):
     return render(request, "AppCoder/busquedaItinerario.html")
 
-
+@login_required
 def buscar(request):
     region=request.GET["region"]
     print(region)
@@ -78,7 +81,7 @@ def buscar(request):
     else:
         return render(request, "AppCoder/buscar.html", {"mensaje":"campo vacio"})
 
-
+@login_required
 def comentarios(request):
 
     if request.method =="POST":
@@ -112,6 +115,7 @@ def inicio(request):
 def inicioApp(request):
     return render(request, "AppCoder/inicio.html")
 
+
 def login_request(request):
     if request.method=="POST":
         form= AuthenticationForm(request, data=request.POST)
@@ -122,7 +126,7 @@ def login_request(request):
             usuario=authenticate(username=usu, password=clave)
             if usuario is not None:
                 login(request, usuario)
-                return render(request, "AppCoder/inicio.html", {"mensaje": f"usuario {usu.upper()} logueado correctamentre"})
+                return render(request, "AppCoder/inicio.html", {"mensaje": f"Usuario {usu.upper()} logueado correctamentre"})
             else:
                 return render(request, "AppCoder/login.html", {"form": form, "mensaje": "Usuario o contraseña incorrectos"})
         else:
@@ -144,3 +148,29 @@ def register(request):
     else:
         form=RegistroUsuarioForm()
         return render(request, "AppCoder/register.html", {"form": form})    
+    
+
+def editarPerfil(request):
+    usuario=request.user
+
+    if request.method=="POST":
+        form=UserEditForm(request.POST)
+        if form.is_valid():
+            info=info.cleaned_data
+            usuario.email=info["email"]
+            usuario.password1=info["password1"]
+            usuario.password2=info["password2"]
+            usuario.first_name=info["first_name"]
+            usuario.last_name=info["last_name"]
+            usuario.save()
+            return render(request, "AppCoder/inicio.html", {"mensaje":f"Usuario {usuario.username} editado correctamente"})
+        
+        else:
+            return render(request, "AppCoder/editarPerfil.html", {"form":form, "nombreusuario":usuario.username})
+        
+    else:
+        form=UserEditForm(instance=usuario)    
+        return render(request, "AppCoder/editarPerfil.html", {"form":form, "nombreusuario":usuario.username})
+
+    
+

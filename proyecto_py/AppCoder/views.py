@@ -53,7 +53,18 @@ def suscriptor(request):
     suscriptor= Suscriptor.objects.all()
     context = {"suscriptor": suscriptor, "form" : form}
 
+   
+# {"avatar": obtenerAvatar(request)}
     return render(request, "AppCoder/suscriptor.html", context)
+
+def obtenerAvatar(request):
+
+    avatares=Avatar.objects.filter(user=request.user.id)[0].imagen.url
+    if len(avatares)!=0:
+        return avatares[0].imagen.url
+    else:
+        return "/media/avatars/default.png"
+    
 
 @login_required
 def eliminarSuscriptor(request, id):
@@ -62,11 +73,11 @@ def eliminarSuscriptor(request, id):
     suscriptor.delete()
     suscriptor= Suscriptor.objects.all()
     form = SuscriptorForm()
-    return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form})
+    return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form, "avatar": obtenerAvatar(request)} )
 
 @login_required
 def busquedaItinerario(request):
-    return render(request, "AppCoder/busquedaItinerario.html")
+    return render(request, "AppCoder/busquedaItinerario.html", {"avatar": obtenerAvatar(request)})
 
 @login_required
 def buscar(request):
@@ -156,7 +167,7 @@ def editarPerfil(request):
     if request.method=="POST":
         form=UserEditForm(request.POST)
         if form.is_valid():
-            info=info.cleaned_data
+            info=form.cleaned_data
             usuario.email=info["email"]
             usuario.password1=info["password1"]
             usuario.password2=info["password2"]

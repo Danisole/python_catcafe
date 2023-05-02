@@ -36,13 +36,16 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'suscriptor' %}">Suscripciones</a>
-                        </li>
+                        </li> 
+                        <p>Bienvenido: {{ user.username }}</p>
+                        <img src="{{ avatar }}" alt="">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'editarPerfil' %}">Editar Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
+                       
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Login</a>

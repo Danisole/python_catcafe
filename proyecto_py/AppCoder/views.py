@@ -61,7 +61,7 @@ def obtenerAvatar(request):
 
     avatares=Avatar.objects.filter(user=request.user.id)[0].imagen.url
     if len(avatares)!=0:
-        return avatares[0].imagen.url
+        return avatares
     else:
         return "/media/avatars/default.png"
     
@@ -77,7 +77,7 @@ def eliminarSuscriptor(request, id):
 
 @login_required
 def busquedaItinerario(request):
-    return render(request, "AppCoder/busquedaItinerario.html", {"avatar": obtenerAvatar(request)})
+    return render(request, "AppCoder/busquedaItinerario.html")
 
 @login_required
 def buscar(request):

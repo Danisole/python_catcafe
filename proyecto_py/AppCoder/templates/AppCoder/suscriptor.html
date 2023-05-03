@@ -4,13 +4,13 @@
 
 {% block titulo %} 
 
-    {<h1 class="text-center my-5">Suscribete a mi blog</h1>}
+    {<h1 class="text-center my-5">Suscribete a la Cat Comunidad</h1>}
 
 {% endblock %}
 
 {% block imagen %} 
 
-<img src="../../static/AppCoder/assets/suscribirse.png" class="img-fluid" alt="dibujo">
+<img src="../../static/AppCoder/assets/compu_sillonVertical.jpg" class="img-fluid" alt="dibujo" style="height: 500px; width: auto; border-radius: 50%;">
 
 {% endblock %}
 
@@ -22,13 +22,13 @@
 
 {% block imagen2 %} 
 
-<img src="../../static/AppCoder/assets/regalo.png" class="img-fluid" alt="dibujo">
+<img src="../../static/AppCoder/assets/mozo.jpg" class="img-fluid" alt="dibujo" style="height: 400px; width: auto; border-radius: 50%;">
 
 {% endblock %}
 
 {% block tituloForm %} 
 
-<h4 class="text-center h3_contacto">Suscribete a mi blog</h4>
+<h4 class="text-center h3_contacto">No te pierdas de ninguna novedad</h4> 
 
 {% endblock %}
 
@@ -51,7 +51,7 @@
     
     <h5>{{ mensaje }}</h5>
 
-    <table class="table table-bordered" style="border-color: #023e8a">
+    <table class="table table-bordered table-secondary" style="border-color: #023e8a; border-inline: 3px;">
         <thead>
             <tr>
                 <th>ID</th>
@@ -78,7 +78,7 @@
                     {{ suscrip.email }}                
                 </td>
                 <td>
-                    <a class="btn btn-danger" href="{% url 'eliminarSuscriptor' suscrip.id %}"><i class="fas fa-trash-alt"></i></a>                
+                    <a class="btn btn-danger" href="{% url 'eliminarSuscriptor' suscrip.id %}" style="height: 40px; width: auto;"><i class="fas fa-trash-alt"></i></a>                
                 </td>
 
             </tr>

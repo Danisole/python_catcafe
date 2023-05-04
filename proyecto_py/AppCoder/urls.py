@@ -8,7 +8,7 @@ urlpatterns = [
 
     path("comentarios/", comentarios, name="comentarios"),
     
-    path("busquedaItinerario/", busquedaItinerario, name="busquedaItinerario"),
+    path("busquedaMenu/", busquedaMenu, name="busquedaMenu"),
     path("buscar/", buscar, name="buscar"),
 
     path("suscriptor/", suscriptor, name="suscriptor"),

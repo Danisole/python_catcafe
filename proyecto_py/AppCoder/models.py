@@ -19,14 +19,14 @@ class Suscriptor(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido} {self.email}"
 
-class Itinerarios(models.Model):
+class Menus(models.Model):
 
     nombre=models.CharField(max_length=50)
-    lugar=models.CharField(max_length=50)
-    region=models.CharField(max_length=50)
+    ingredientes=models.CharField(max_length=100)
+    personas=models.IntegerField()
     
     def __str__(self):
-        return f"{self.nombre} {self.lugar} {self.region}"
+        return f"{self.nombre} {self.ingredientes} {self.personas}"
     
 class Comentarios(models.Model):
 

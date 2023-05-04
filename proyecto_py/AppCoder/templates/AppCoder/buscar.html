@@ -4,7 +4,7 @@
 
 {% block titulo %} 
 
-    <h1 class="text-center my-5">Turnos</h1>
+    <h1 class="text-center my-5">Menus</h1>
 
 {% endblock %}
 
@@ -17,7 +17,7 @@
 
 {% block titulo2 %} 
 
-<h2 class="text-center my-5">Itinerarios Premiun</h2>
+<h2 class="text-center my-5">Como elegir tu menu</h2>
 
 {% endblock %}
 
@@ -29,7 +29,7 @@
 
 {% block tituloForm %} 
 
-<h4 class="text-center h3_contacto">Busca tu itinerario segun el continente</h4>
+<h4 class="text-center h3_contacto">Busca tu menu para cada hora del dia</h4>
 <br>
 {% endblock %}
 
@@ -37,24 +37,22 @@
 
 <form action="{% url 'buscar' %}" method="GET" class="text-center">
 
-    <label for="region">Indica una region</label>
-        <select name="region" id="region">
-            <option value="">selecciona una region</option>
-            <option value="norteamerica">Norteamerica</option>
-            <option value="latinoamerica">Latinoamerica</option>
-            <option value="asia">Asia</option>
-            <option value="oceania">Oceania</option>
-            <option value="europa">Europa</option>
-            <option value="africa">Africa</option>
+    <label for="nombre">Hora del dia</label>
+        <select name="nombre" id="nombre">
+            <option value="">Elige tu menu</option>
+            <option value="desayuno">Desayuno</option>
+            <option value="almuerzo">Almuerzo</option>
+            <option value="merienda">Merienda</option>
+            <option value="cena">Cena</option>
         </select>
     <!-- <input type="text" name="region" id="region">     -->
     <input type="submit" value="Buscar">
     
 </form>
 <br>
-{% if itinerarios %} 
+{% if menus %} 
 
-<h5 class="text-center h5_contacto">Itinerarios disponibles</h5>
+<h5 class="text-center h5_contacto">Menus disponibles</h5>
 <br>
 {{ mensaje }}
 
@@ -63,22 +61,26 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Lugar</th>                      
-                <th>Region</th>                     
+                <th>Menu</th>                      
+                <th>Personas</th> 
+                <th>Seleccionar</th>                   
             </tr>
         </thead>
 
         <tbody>
-        {% for itinerario in itinerarios %} 
+        {% for menu in menus %} 
             <tr>
                 <td>
-                    {{ itinerario.nombre }}
+                    {{ menu.nombre }}
                 </td>
                 <td>
-                    {{ itinerario.lugar }}
+                    {{ menu.ingredientes }}
                 </td>
                 <td>
-                    {{ itinerario.region }}
+                    {{ menu.personas }}
+                </td>
+                <td>
+                    <input type="checkbox">
                 </td>
             </tr>
         {% endfor %}
@@ -87,7 +89,7 @@
 </div>
 {% else %} 
 
-<h4 class="text-center h5_contacto">No hay itinerarios disponibles</h4>
+<h4 class="text-center h5_contacto">No hay menus disponibles</h4>
 
 {% endif %} 
 

@@ -5,6 +5,6 @@ from .models import *
 
 admin.site.register(Viaje)
 admin.site.register(Suscriptor)
-admin.site.register(Itinerarios)
+admin.site.register(Menus)
 admin.site.register(Comentarios)
 admin.site.register(Avatar)

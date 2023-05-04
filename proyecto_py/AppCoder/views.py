@@ -76,18 +76,18 @@ def eliminarSuscriptor(request, id):
     return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form, "avatar": obtenerAvatar(request)} )
 
 @login_required
-def busquedaItinerario(request):
-    return render(request, "AppCoder/busquedaItinerario.html")
+def busquedaMenu(request):
+    return render(request, "AppCoder/busquedaMenu.html")
 
 @login_required
 def buscar(request):
-    region=request.GET["region"]
-    print(region)
+    nombre=request.GET["nombre"]
+    print(nombre)
 
-    if region!="":
+    if nombre!="":
 
-        itinerarios=Itinerarios.objects.filter(region__icontains=region)
-        return render(request, "AppCoder/buscar.html", {"itinerarios": itinerarios})
+        menus=Menus.objects.filter(nombre__icontains=nombre)
+        return render(request, "AppCoder/buscar.html", {"menus": menus})
     
     else:
         return render(request, "AppCoder/buscar.html", {"mensaje":"campo vacio"})

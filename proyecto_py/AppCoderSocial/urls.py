@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import *
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns =[
-    path("", feed, name='feed'),
-    path('profile/', profile, name='profile'),
-]
+    path("", views.feed, name='feed'),
+    path('profile/', views.profile, name='profile'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

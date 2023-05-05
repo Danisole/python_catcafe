@@ -6,7 +6,7 @@ from django.utils import timezone
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #imag
+    image = models.ImageField(default='default.png')
     def __str__(self):
         return f'Perfil de {self.user.username}'
 

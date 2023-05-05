@@ -2,13 +2,10 @@ from django.shortcuts import render
 from .models import *
 from .forms import *
 from django.http import HttpResponse
-
 from django.urls import reverse_lazy
-# Create your views here.
-
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
-
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -80,7 +77,7 @@ def busquedaMenu(request):
     return render(request, "AppCoder/busquedaMenu.html")
 
 @login_required
-def buscar(request):
+def buscar(request):         
     nombre=request.GET["nombre"]
     print(nombre)
 

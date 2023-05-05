@@ -48,10 +48,10 @@ def suscriptor(request):
         form = SuscriptorForm()
     
     suscriptor= Suscriptor.objects.all()
-    context = {"suscriptor": suscriptor, "form" : form}
+    context = {"suscriptor": suscriptor, "form" : form,"avatar": obtenerAvatar(request)}
 
    
-# {"avatar": obtenerAvatar(request)}
+
     return render(request, "AppCoder/suscriptor.html", context)
 
 def obtenerAvatar(request):
@@ -70,11 +70,11 @@ def eliminarSuscriptor(request, id):
     suscriptor.delete()
     suscriptor= Suscriptor.objects.all()
     form = SuscriptorForm()
-    return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form, } )
+    return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form, "avatar": obtenerAvatar(request)} )
 
 @login_required
 def busquedaMenu(request):
-    return render(request, "AppCoder/busquedaMenu.html")
+    return render(request, "AppCoder/busquedaMenu.html", {"avatar": obtenerAvatar(request)})
 
 @login_required
 def buscar(request):         
@@ -87,7 +87,7 @@ def buscar(request):
         return render(request, "AppCoder/buscar.html", {"menus": menus})
     
     else:
-        return render(request, "AppCoder/buscar.html", {"mensaje":"campo vacio"})
+        return render(request, "AppCoder/buscar.html", {"mensaje":"campo vacio", "avatar": obtenerAvatar(request)})
 
 @login_required
 def comentarios(request):
@@ -111,7 +111,7 @@ def comentarios(request):
         form = ComentariosForm()
     
     comentarios= Comentarios.objects.all()
-    context = {"comentarios": comentarios, "form" : form}
+    context = {"comentarios": comentarios, "form" : form, "avatar": obtenerAvatar(request)}
 
     return render(request, "AppCoder/comentarios.html", context)
 
@@ -171,14 +171,14 @@ def editarPerfil(request):
             usuario.first_name=info["first_name"]
             usuario.last_name=info["last_name"]
             usuario.save()
-            return render(request, "AppCoder/inicio.html", {"mensaje":f"Usuario {usuario.username} editado correctamente"})
+            return render(request, "AppCoder/inicio.html", {"mensaje":f"Usuario {usuario.username} editado correctamente","avatar": obtenerAvatar(request) })
         
         else:
-            return render(request, "AppCoder/editarPerfil.html", {"form":form, "nombreusuario":usuario.username})
+            return render(request, "AppCoder/editarPerfil.html", {"form":form, "nombreusuario":usuario.username, "avatar": obtenerAvatar(request)})
         
     else:
         form=UserEditForm(instance=usuario)    
-        return render(request, "AppCoder/editarPerfil.html", {"form":form, "nombreusuario":usuario.username})
+        return render(request, "AppCoder/editarPerfil.html", {"form":form, "nombreusuario":usuario.username, "avatar": obtenerAvatar(request)})
 
     
 

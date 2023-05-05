@@ -70,7 +70,7 @@ def eliminarSuscriptor(request, id):
     suscriptor.delete()
     suscriptor= Suscriptor.objects.all()
     form = SuscriptorForm()
-    return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form, "avatar": obtenerAvatar(request)} )
+    return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form, } )
 
 @login_required
 def busquedaMenu(request):

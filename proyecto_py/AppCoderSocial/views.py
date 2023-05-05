@@ -11,3 +11,4 @@ def feed(request):
 
 def profile(request):
     return render(request, 'AppCoderSocial/profile.html')
+

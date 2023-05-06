@@ -1,10 +1,10 @@
-body{
+/* body{
 	background: #2F4F4F;
 	font-size: 62.5%;
 	font-family: 'Varela Round', Helvetica, Arial, serif;
 }
 /* Global Styles*/
-h5{
+/* h5{
 	font-size: 1rem;
 	margin-bottom: 0;
 
@@ -22,14 +22,14 @@ button{
 	 border-radius: 4px;
 	cursor: pointer;
 
-}
+} */
 
-img{
+/* img{
 	object-fit: cover;
-}
+} */ 
 
 /* Nav bar */
-.main-head{
+/* .main-head{
 	background: white;
 	color: black;
 }
@@ -41,9 +41,9 @@ nav.main{
 	margin: auto; 
 	align-items: center;
 	padding: 0.5rem;
-}
+} */
 
-nav.main ul{
+/* nav.main ul{
 	display: flex;
 	flex: 1 1 40rem;
 	justify-content: space-around;
@@ -53,27 +53,27 @@ nav.main ul{
 
 #logo{
 	flex: 2 1 40rem;
-}
+} */
 
 /* -----*/
 
-a{
+/* a{
 	font-size: .93rem;
 	text-decoration: none;
 	color: black;
-}
+} */
 
 
-.main{
+/* .main{
 	background: white;
 	width: 60%;
 	margin: 5% auto;
 	border-radius: 4px;
 	padding-bottom: 20px;
-}
+} */
 
 /* NAVIGATION BAR */
-.second-nav{
+/* .second-nav{
 	display: flex;
 	padding: 15px 30px;
 }
@@ -89,13 +89,13 @@ a{
 
 .second-nav .profile{
 	flex: 1 1 30px;
-}
+} */
 
-.second-nav .profile:hover{
+/* .second-nav .profile:hover{
 	flex: 1 1 30px;
 	color: grey;
-}
-
+} */
+/* 
 .second-nav .new{
 	flex: 6 1 5rem;
 	text-align: right;
@@ -105,11 +105,11 @@ a{
 
 .second-nav .new:hover{
 	color: grey;
-}
+} */
 
 /* Article */
 
-article{
+/* article{
 	width: 93%;
 	margin: auto;
 	padding: 40px 0;
@@ -146,10 +146,10 @@ time {
 
 .post{
 	font-size: .94rem;
-}
+} */
 
 /* PROFILE */
-.profile{
+/* .profile{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -165,10 +165,10 @@ time {
 .profile h2{
 	margin-top: -10px;
 	font-size: 1.3rem;
-}
+} */
 
 /* Followers / Following / Post */
-.follow{
+/* .follow{
 	display: flex;
 	width: 95%;
 	justify-content: space-around;
@@ -176,11 +176,11 @@ time {
 	text-align: center;
 	border-bottom: 2px solid #ECEEEF;
 	padding-bottom: 20px;
-}
+} */
 
 
 /*Form Elements*/
-form {
+/* form {
     margin: 0;
     padding: 40px;
     font-size: 1rem;
@@ -223,14 +223,14 @@ button#submit {
   border-radius: 4px;
   opacity: .8;
   transition: .35s linear;
-}
+} */
 
-button#submit:hover {
+/* button#submit:hover {
   opacity: 1;
-}
+} */
 
 /*Notifications*/
-.notification {
+/* .notification {
   text-align: center;
   padding: 10px 20px;
   border-radius: 4px;
@@ -245,27 +245,27 @@ button#submit:hover {
   background: #AB3444;
   
   margin-bottom: 20px;
-}
+} */
 
 
 /*Footer*/
 
 
-img.profile{
+/* img.profile{
   height: 80px;
   width: 80px;
   margin-right: 10px;
   margin-left: 30px;
   border-radius: 50%;
-}
+} */
 
 
 
 
 /*Media Queries*/
-@media (max-width: 786px) {
+/* @media (max-width: 786px) {
   .main {
     width: 95%;
   }
 
-}
+} */

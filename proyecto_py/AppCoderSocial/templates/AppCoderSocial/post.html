@@ -2,7 +2,7 @@
 
 {% block content %}  
 
-<form method="post">
+<form method="post" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
     {% csrf_token %} 
 
     {{ form.as_p }}

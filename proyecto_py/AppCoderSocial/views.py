@@ -3,14 +3,18 @@ from .forms import PostForm
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def feed(request):
     posts = Post.objects.all()
 
     context = {'posts': posts}
     return render(request, 'AppCoderSocial/feed.html', context)
 
+
+@login_required
 def profile(request, username=None):
     current_user = request.user
     if username and username !=  current_user. username:
@@ -23,7 +27,7 @@ def profile(request, username=None):
     return render(request, 'AppCoderSocial/profile.html', {"user": user, "posts": posts})
 
 
-
+@login_required
 def post(request):
     current_user=get_object_or_404(User, pk=request.user.pk)
     if request.method == 'POST':
@@ -38,6 +42,8 @@ def post(request):
         form = PostForm()
     return render(request, 'AppCoderSocial/post.html', {'form': form})
 
+
+@login_required
 def follow(request, username):
     current_user =request.user
     to_user =User.objects.get(username=username)
@@ -47,6 +53,8 @@ def follow(request, username):
     messages.success(request, f'Sigues a {username}')
     return redirect('feed')
 
+
+@login_required
 def unfollow(request, username):
     current_user =request.user
     to_user =User.objects.get(username=username)

@@ -9,6 +9,8 @@ def feed(request):
     context = {'posts': posts}
     return render(request, 'AppCoderSocial/feed.html', context)
 
+
+
 def profile(request):
     return render(request, 'AppCoderSocial/profile.html')
 

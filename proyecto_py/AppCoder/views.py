@@ -73,6 +73,27 @@ def eliminarSuscriptor(request, id):
     return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form, "avatar": obtenerAvatar(request)} )
 
 @login_required
+def editarSuscriptor(request, id):
+    suscriptor = Suscriptor.objects.get(id=id)
+    if request.method == "POST":
+        form = SuscriptorForm(request.POST)
+        if form.is_valid():
+            info=form.cleaned_data
+            suscriptor.nombre = info['nombre']
+            suscriptor.apellido = info['apellido']
+            suscriptor.email = info['email']
+            suscriptor.save()
+            suscriptor = Suscriptor.objects.all()
+            form = SuscriptorForm()
+            return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue editada con exito", "avatar": obtenerAvatar(request)})
+        pass
+    else:
+        formulario= SuscriptorForm(initial={"nombre":suscriptor.nombre, "apellido": suscriptor.apellido, "email": suscriptor.email})
+        return render(request, "AppCoder/editarSuscriptor.html", {"form": formulario, "suscriptor": suscriptor})
+    
+
+
+@login_required
 def busquedaMenu(request):
     return render(request, "AppCoder/busquedaMenu.html", {"avatar": obtenerAvatar(request)})
 

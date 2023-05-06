@@ -54,20 +54,17 @@
     <table class="table table-bordered table-secondary" style="border-color: #023e8a; border-inline: 3px;">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>EMAIL</th>
                 <th>ELIMINAR</th>
+                <th>EDITAR</th>
             </tr>
         </thead>
 
         <tbody>
         {% for suscrip in suscriptor %}
-            <tr>
-                <td>
-                    {{ suscrip.id }}                
-                </td>
+            <tr>                
                 <td>
                     {{ suscrip.nombre }}                
                 </td>
@@ -80,7 +77,9 @@
                 <td>
                     <a class="btn btn-danger" href="{% url 'eliminarSuscriptor' suscrip.id %}" style="height: 40px; width: auto;"><i class="fas fa-trash-alt"></i></a>                
                 </td>
-
+                <td>
+                    <a class="btn btn-primary" href="{% url 'editarSuscriptor' suscrip.id %}" style="height: 40px; width: auto;"><i class="fas fa-edit"></i></a>                
+                </td>
             </tr>
 
             {% endfor %}

@@ -239,7 +239,7 @@ button#submit:hover {
 }
 .success {
   background: #43DC7E;
-  color: white;
+  
 }
 .error {
   background: #AB3444;
@@ -249,17 +249,6 @@ button#submit:hover {
 
 
 /*Footer*/
-footer{
-  
-  text-align: center;
-  font-size: .875em;
-  margin: 40px 0;
-}
-
-footer p {
-  opacity: .8;
-}
-
 
 
 img.profile{
@@ -271,9 +260,7 @@ img.profile{
 }
 
 
-.follow-button{
-  color: white;
-}
+
 
 /*Media Queries*/
 @media (max-width: 786px) {

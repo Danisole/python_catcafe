@@ -18,7 +18,7 @@ p{
 
 button{
 	font-size: 1rem;
-	color: white;
+	
 	padding: 0.4rem 1.4rem;
 	border: none;
 	background: #7A9D96;
@@ -221,7 +221,7 @@ button#submit {
   padding: 20px 0;
   text-align: center;
   background: #7A9D96;
-  color: #fff;
+  
   border: 0;
   border-radius: 4px;
   opacity: .8;
@@ -237,35 +237,21 @@ button#submit:hover {
   text-align: center;
   padding: 10px 20px;
   border-radius: 4px;
-  color: #fff;
+  
   font-size: 0.9rem;
 }
 .success {
   background: #43DC7E;
-  color: white;
+  
 }
 .error {
   background: #AB3444;
-  color: white;
+  
   margin-bottom: 20px;
 }
 
 
-/*Footer*/
-footer{
-  color: white;
-  text-align: center;
-  font-size: .875em;
-  margin: 40px 0;
-}
 
-footer p {
-  opacity: .8;
-}
-
-footer p a {
-  color: white;
-}
 
 img.profile{
   height: 80px;
@@ -276,9 +262,7 @@ img.profile{
 }
 
 
-.follow-button{
-  color: white;
-}
+
 
 /*Media Queries*/
 @media (max-width: 786px) {

@@ -5,7 +5,8 @@ from django.utils import timezone
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.png')
+    image = models.ImageField(default='avatars/default.png')
+
     def __str__(self):
         return f'Perfil de {self.user.username}'
     
@@ -42,6 +43,6 @@ class Relationship(models.Model):
     
     class Meta:
         indexes = [
-        models.Index(fields=['from_user', 'to_user', ])    
+        models.Index(fields=['from_user', 'to_user',]),    
         ]
 

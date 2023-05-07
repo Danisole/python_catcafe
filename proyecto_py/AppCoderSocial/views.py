@@ -19,7 +19,7 @@ def feed(request):
 @login_required
 def profile(request, username=None):
     current_user = request.user
-    if username and username !=  current_user. username:
+    if username and username !=  current_user.username:
         user = User.objects.get(username=username)
         posts = user.posts.all()
     else:

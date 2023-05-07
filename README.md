@@ -54,6 +54,6 @@ from django.http import HttpResponse
 
 ![Inicio](./proyecto_py/AppCoder/static/AppCoder/assets/Captura%20de%20pantalla%20(31).png)
 
-![Vistas](./proyecto_py/AppCoder/static/AppCoder/assets/Captura%20de%20pantalla%20(32).png.png)
+![Vistas](./proyecto_py/AppCoder/static/AppCoder/assets/Captura%20de%20pantalla%20(32).png)
 
 

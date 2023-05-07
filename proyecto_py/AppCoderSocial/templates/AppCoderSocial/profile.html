@@ -11,7 +11,7 @@
             {% if user not in request.user.profile.following %} 
             <button style="font-size: 1rem; padding: 0.4rem 1.4rem; border: none; background: #4f5d75; border-radius: 4px; cursor: pointer;"><a style="text-decoration: none; color: white;" class="follow-button" href="{% url 'follow'  user %}">Follow</a></button>
             {% else %}
-            <button><a class="follow-button" href="{% url 'unfollow' user %}">UnFollow</a></button>
+            <button style="font-size: 1rem; padding: 0.4rem 1.4rem; border: none; background: #4f5d75; border-radius: 4px; cursor: pointer;"><a style="text-decoration: none; color: white;" class="follow-button" href="{% url 'unfollow' user %}">UnFollow</a></button>
             {% endif %}
         {% endif %} 
         

@@ -57,10 +57,10 @@ def suscriptor(request):
 
 def obtenerAvatar(request):
 
-    avatares=Avatar.objects.filter(user=request.user.id)[0].imagen.url
+    avatares=Avatar.objects.filter(user=request.user.id)
 
     if len(avatares)!=0:
-        return avatares
+        return avatares[0].imagen.url
     else:
         return "/media/default.png"
     

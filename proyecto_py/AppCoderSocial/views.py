@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm
 from .models import *
+from AppCoder.models import * 
+from AppCoder.views import *
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -10,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 def feed(request):
     posts = Post.objects.all()
 
-    context = {'posts': posts}
+    context = {'posts': posts, "avatar": obtenerAvatar(request)}
     return render(request, 'AppCoderSocial/feed.html', context)
 
 
@@ -24,7 +26,7 @@ def profile(request, username=None):
         posts = current_user.posts.all()
         user = current_user
 
-    return render(request, 'AppCoderSocial/profile.html', {"user": user, "posts": posts})
+    return render(request, 'AppCoderSocial/profile.html', {"user": user, "posts": posts, "avatar": obtenerAvatar(request)})
 
 
 @login_required
@@ -40,7 +42,7 @@ def post(request):
             return redirect('feed')
     else: 
         form = PostForm()
-    return render(request, 'AppCoderSocial/post.html', {'form': form})
+    return render(request, 'AppCoderSocial/post.html', {'form': form, "avatar": obtenerAvatar(request)})
 
 
 @login_required

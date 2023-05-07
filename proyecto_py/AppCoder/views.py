@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .models import *
 from .forms import *
+from .forms import AvatarForm
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 
@@ -57,10 +58,11 @@ def suscriptor(request):
 def obtenerAvatar(request):
 
     avatares=Avatar.objects.filter(user=request.user.id)[0].imagen.url
+
     if len(avatares)!=0:
         return avatares
     else:
-        return "/media/avatars/default.png"
+        return "/media/default.png"
     
 
 @login_required
@@ -142,7 +144,7 @@ def inicio(request):
     return HttpResponse("mi pagina de inicio")
 
 def inicioApp(request):
-    return render(request, "AppCoder/inicio.html")
+    return render(request, "AppCoder/inicio.html", {"avatar": obtenerAvatar(request) })
 
 
 def login_request(request):
@@ -201,5 +203,22 @@ def editarPerfil(request):
         form=UserEditForm(instance=usuario)    
         return render(request, "AppCoder/editarPerfil.html", {"form":form, "nombreusuario":usuario.username, "avatar": obtenerAvatar(request)})
 
-    
+@login_required
+def agregarAvatar(request):
+    if request.method=="POST":
+        form=AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            avatar=Avatar(user=request.user, imagen=request.FILES["imagen"])
+            avatarViejo=Avatar.objects.filter(user=request.user)
+            if len(avatarViejo)>0:
+                avatarViejo[0].delete()
+            avatar.save()
+            return render(request, "AppCoder/inicio.html", {"mensaje":f'Avatar agregado correctamente', "avatar": obtenerAvatar(request)})    
+        else:
+            return render(request, "AppCoder/agregarAvatar.html", {"form":form, "usuario": request.user, "mensaje": "Error"})
+        
+    else:
+        form=AvatarForm()   
+        return render(request, "AppCoder/agregarAvatar.html", {"form":form, "usuario": request.user})
+
 

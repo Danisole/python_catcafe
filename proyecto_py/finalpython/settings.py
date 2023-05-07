@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "AppCoder",
-    "AppCoderSocial",
+    "AppCoderSocial.apps.AppcodersocialConfig",
 ]
 
 MIDDLEWARE = [

@@ -38,5 +38,5 @@ class Comentarios(models.Model):
         return f"{self.nombre} {self.reseña} {self.estrellas}"
     
 class Avatar(models.Model):
-        imagen=models.ImageField(upload_to="avatars")
+        imagen=models.ImageField(upload_to="")
         user=models.ForeignKey(User, on_delete=models.CASCADE)

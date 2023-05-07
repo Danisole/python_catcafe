@@ -1,0 +1,33 @@
+{% extends 'AppCoder/padre.html' %} 
+
+{% load static %}
+
+{% block titulo %} 
+
+    <h1 class="text-center my-5">Agrega un Avatar para una experiencia mas personalizada</h1>
+
+{% endblock %}
+
+{% block tituloForm %} 
+
+        <h3 class="text-center h3_contacto">Editar avatar {{ nombreusuario }}</h3>
+        
+{% endblock %}
+
+{% block formulario %} 
+
+<h4>{{ mensaje }}</h4>
+
+        <form action="{% url 'agregarAvatar' %}" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center; justify-content: center;" >
+            {% csrf_token %}
+            <table>
+                
+                {{ form.as_table }}
+
+            </table>
+
+            <input type="submit" value="Agregar Avatar">
+            
+        </form>
+
+{% endblock %}
